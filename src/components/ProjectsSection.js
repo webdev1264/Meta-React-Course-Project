@@ -37,16 +37,11 @@ const ProjectsSection = () => {
       isDarkBackground
       p={8}
       alignItems="flex-start"
-      spacing={8}
-    >
+      spacing={8}>
       <Heading as="h1" id="projects-section">
         Featured Projects
       </Heading>
-      <Box
-        display="grid"
-        gridTemplateColumns="repeat(2,minmax(0,1fr))"
-        gridGap={8}
-      >
+      <Box display="grid" gridTemplateColumns="repeat(2,minmax(0,1fr))" gridGap={8}>
         {projects.map((project) => (
           <Card
             key={project.title}
