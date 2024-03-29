@@ -1,4 +1,4 @@
-import React from "react";
+import { useBreakpointValue } from "@chakra-ui/react";
 import FullScreenSection from "./FullScreenSection";
 import { Box, Heading } from "@chakra-ui/react";
 import Card from "./Card";
@@ -31,6 +31,11 @@ const projects = [
 ];
 
 const ProjectsSection = () => {
+  const gridTemplateColumns = useBreakpointValue({
+    base: "minmax(0,1fr)",
+    md: "repeat(2,minmax(0,1fr))",
+  });
+
   return (
     <FullScreenSection
       backgroundColor="#14532d"
@@ -41,7 +46,7 @@ const ProjectsSection = () => {
       <Heading as="h1" id="projects-section">
         Featured Projects
       </Heading>
-      <Box display="grid" gridTemplateColumns="repeat(2,minmax(0,1fr))" gridGap={8}>
+      <Box display="grid" gridTemplateColumns={gridTemplateColumns} gridGap={8}>
         {projects.map((project) => (
           <Card
             key={project.title}

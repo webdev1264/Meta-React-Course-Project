@@ -6,7 +6,7 @@ import {
   faMedium,
   faStackOverflow,
 } from "@fortawesome/free-brands-svg-icons";
-import { Box, HStack } from "@chakra-ui/react";
+import { Box, HStack, useBreakpointValue } from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
 
 const socials = [
@@ -68,6 +68,11 @@ const Header = () => {
     );
   });
 
+  const flexDir = useBreakpointValue({
+    base: "column",
+    md: "row",
+  });
+
   return (
     <Box
       position="fixed"
@@ -82,7 +87,7 @@ const Header = () => {
       transitionTimingFunction="ease-in-out"
       backgroundColor="#18181b">
       <Box color="white" maxWidth="1280px" margin="0 auto">
-        <HStack px={16} py={4} justifyContent="space-between" alignItems="center">
+        <HStack px={16} py={4} justifyContent="space-between" flexDir={flexDir} alignItems="center">
           <nav>
             <HStack spacing={8}>{socialsToRender}</HStack>
           </nav>

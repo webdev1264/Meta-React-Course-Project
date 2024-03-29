@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useFormik } from "formik";
 import {
   Box,
@@ -11,6 +11,7 @@ import {
   Select,
   Textarea,
   VStack,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import * as Yup from "yup";
 import FullScreenSection from "./FullScreenSection";
@@ -45,9 +46,15 @@ const LandingSection = () => {
     }
   }, [response]);
 
+  const width = useBreakpointValue({
+    base: "90vw",
+    lg: "600px",
+    xl: "1024px",
+  });
+
   return (
     <FullScreenSection isDarkBackground backgroundColor="#512DA8" py={16} spacing={8}>
-      <VStack w="1024px" p={32} alignItems="flex-start">
+      <VStack w={width} alignItems="flex-start">
         <Heading as="h1" id="contact-me-section">
           Contact me
         </Heading>
