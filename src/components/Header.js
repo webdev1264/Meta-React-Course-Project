@@ -7,6 +7,7 @@ import {
   faStackOverflow,
 } from "@fortawesome/free-brands-svg-icons";
 import { Box, HStack } from "@chakra-ui/react";
+import { useEffect, useRef } from "react";
 
 const socials = [
   {
@@ -32,6 +33,22 @@ const socials = [
 ];
 
 const Header = () => {
+  const boxRef = useRef(null);
+
+  useEffect(() => {
+    let lastScrollY = 0;
+    function handleScroll() {
+      const { style } = boxRef.current;
+      style.transform = `translateY(${lastScrollY > window.scrollY ? "0" : "-200px"})`;
+      lastScrollY = window.scrollY;
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   const handleClick = (anchor) => () => {
     const id = `${anchor}-section`;
     const element = document.getElementById(id);
@@ -42,7 +59,6 @@ const Header = () => {
       });
     }
   };
-  [];
 
   const socialsToRender = socials.map((social, i) => {
     return (
@@ -55,6 +71,7 @@ const Header = () => {
   return (
     <Box
       position="fixed"
+      ref={boxRef}
       zIndex={100}
       top={0}
       left={0}
