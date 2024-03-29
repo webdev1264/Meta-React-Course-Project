@@ -90,7 +90,7 @@ const LandingSection = () => {
                 <Select
                   id="type"
                   name="type"
-                  defaultValue={formik.values.type}
+                  value={formik.values.type}
                   onChange={formik.handleChange}>
                   <option value="hireMe">Freelance project proposal</option>
                   <option value="openSource">Open source consultancy session</option>
