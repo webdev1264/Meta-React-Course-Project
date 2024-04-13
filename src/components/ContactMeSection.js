@@ -44,6 +44,7 @@ const LandingSection = () => {
         formik.resetForm();
       }
     }
+    console.log(formik);
   }, [response]);
 
   const width = useBreakpointValue({
@@ -61,7 +62,7 @@ const LandingSection = () => {
         <Box p={6} rounded="md" w="100%">
           <form onSubmit={formik.handleSubmit}>
             <VStack spacing={4}>
-              <FormControl isInvalid={"firstName" in formik.errors}>
+              <FormControl isInvalid={"firstName" in formik.errors && formik.touched.firstName}>
                 <FormLabel htmlFor="firstName">Name</FormLabel>
                 <Input
                   id="firstName"
@@ -73,7 +74,7 @@ const LandingSection = () => {
                 />
                 <FormErrorMessage>Required</FormErrorMessage>
               </FormControl>
-              <FormControl isInvalid={"email" in formik.errors}>
+              <FormControl isInvalid={"email" in formik.errors && formik.touched.email}>
                 <FormLabel htmlFor="email">Email Address</FormLabel>
                 <Input
                   id="email"
@@ -97,7 +98,7 @@ const LandingSection = () => {
                   <option value="other">Other</option>
                 </Select>
               </FormControl>
-              <FormControl isInvalid={"comment" in formik.errors}>
+              <FormControl isInvalid={"comment" in formik.errors && formik.touched.comment}>
                 <FormLabel htmlFor="comment">Your message</FormLabel>
                 <Textarea
                   id="comment"
